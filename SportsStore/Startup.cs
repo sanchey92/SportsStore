@@ -13,9 +13,9 @@ namespace SportsStore
         {
             Configuration = config;
         }
-        
+
         private IConfiguration Configuration { get; set; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
@@ -36,6 +36,11 @@ namespace SportsStore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    "pagination",
+                    "Products/Page{productPage}",
+                    new {Controller = "Home", action = "Index"}
+                );
                 endpoints.MapDefaultControllerRoute();
             });
         }
