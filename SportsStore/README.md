@@ -1,0 +1,1 @@
+This is a training project for practice ASP.NET core MVC
