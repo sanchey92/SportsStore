@@ -17,7 +17,7 @@ namespace SportsStore
 
         private IConfiguration Configuration { get; set; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public static void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddDbContext<StoreDbContext>(options =>
@@ -33,7 +33,7 @@ namespace SportsStore
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
