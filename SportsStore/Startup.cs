@@ -26,6 +26,7 @@ namespace SportsStore
                     "Host=localhost;Port=5432;Database=SportsStore;Username=postgres;Password=root");
             });
             services.AddScoped<IStoreRepository, EfStoreRepository>();
+            services.AddScoped<IOrderRepository, EfOrderRepository>();
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
@@ -63,6 +64,8 @@ namespace SportsStore
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
             });
+            
+            SeedData.EnsurePopulated(app);
         }
     }
 }
